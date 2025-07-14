@@ -18,6 +18,28 @@ public:
     ~MainWindow();
 
 private slots:
+
+
+    void on_pushButton_num0_clicked();
+
+    void on_pushButton_num1_clicked();
+
+    void on_pushButton_num2_clicked();
+
+    void on_pushButton_num3_clicked();
+
+    void on_pushButton_num4_clicked();
+
+    void on_pushButton_num5_clicked();
+
+    void on_pushButton_num6_clicked();
+
+    void on_pushButton_num7_clicked();
+
+    void on_pushButton_num8_clicked();
+
+    void on_pushButton_num9_clicked();
+
     void on_pushButton_mult_clicked();
 
     void on_pushButton_sum_clicked();
@@ -25,6 +47,10 @@ private slots:
     void on_pushButton_rest_clicked();
 
     void on_pushButton_div_clicked();
+
+    void on_pushButton_equal_clicked();
+
+    void on_pushButton_cleaer_clicked();
 
 private:
     Ui::MainWindow *ui;
