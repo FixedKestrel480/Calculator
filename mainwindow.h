@@ -52,6 +52,18 @@ private slots:
 
     void on_pushButton_cleaer_clicked();
 
+    void on_pushButton_cos_clicked();
+
+    void on_pushButton_sin_clicked();
+
+    void on_pushButton_tan_clicked();
+
+    void on_pushButton_pow_clicked();
+
+    void on_pushButton_log_clicked();
+
+    void on_pushButton_point_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

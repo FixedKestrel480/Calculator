@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <cmath>
 #include <QString>
 #include <QJSEngine> //evaluate text as if it was code
 
@@ -105,6 +106,12 @@ void MainWindow::on_pushButton_equal_clicked()
 {
     QString expression = ui->lineEdit_display->text(); //read what the user put
 
+    expression.replace("cos(", "Math.cos("); //in radians
+    expression.replace("tan(", "Math.tan("); //in radians
+    expression.replace("pow(", "Math.pow(");
+    expression.replace("log(", "Math.log(");
+    expression.replace("sin(", "Math.sin("); //in radians
+
     QJSEngine engine; //motor that will evaluate the text
     QJSValue result = engine.evaluate(expression); //evaluate
 
@@ -119,5 +126,41 @@ void MainWindow::on_pushButton_equal_clicked()
 void MainWindow::on_pushButton_cleaer_clicked()
 {
     ui->lineEdit_display->clear();
+}
+
+
+void MainWindow::on_pushButton_cos_clicked()
+{
+    ui->lineEdit_display->insert("cos(");
+}
+
+
+void MainWindow::on_pushButton_sin_clicked()
+{
+    ui->lineEdit_display->insert("sin(");
+}
+
+
+void MainWindow::on_pushButton_tan_clicked()
+{
+    ui->lineEdit_display->insert("tan(");
+}
+
+
+void MainWindow::on_pushButton_pow_clicked()
+{
+    ui->lineEdit_display->insert("pow(");
+}
+
+
+void MainWindow::on_pushButton_log_clicked()
+{
+    ui->lineEdit_display->insert("log("); //natural logarithm
+}
+
+
+void MainWindow::on_pushButton_point_clicked()
+{
+    ui->lineEdit_display->insert(".");
 }
 
