@@ -106,6 +106,7 @@ void MainWindow::on_pushButton_equal_clicked()
 {
     QString expression = ui->lineEdit_display->text(); //read what the user put
 
+    expression.replace("Ans",lastResult); //replace ans for the other numeric value
     expression.replace("cos(", "Math.cos("); //in radians
     expression.replace("tan(", "Math.tan("); //in radians
     expression.replace("pow(", "Math.pow(");
@@ -118,7 +119,11 @@ void MainWindow::on_pushButton_equal_clicked()
     if (result.isError()) {
         ui->lineEdit_display->setText("Error"); //manage errors, things that cannot be done
     } else {
-        ui->lineEdit_display->setText(result.toString()); //show result
+        QString resultStr = result.toString();
+        //Store the result as last Result
+        lastResult = resultStr;
+        ui->lineEdit_display->setText(resultStr);
+
     }
 }
 
@@ -162,5 +167,27 @@ void MainWindow::on_pushButton_log_clicked()
 void MainWindow::on_pushButton_point_clicked()
 {
     ui->lineEdit_display->insert(".");
+}
+
+
+void MainWindow::on_pushButton_clicked() //ans button
+{
+       QString currentText = ui->lineEdit_display->text(); // shows the current text in caulculaotr
+    if(currentText == lastResult){
+        ui->lineEdit_display->setText("Ans"); //if true, replace what is on screen and put ans
+    }else{
+        ui->lineEdit_display->insert("Ans");
+    }
+
+}
+
+
+void MainWindow::on_pushButton_DEL_clicked()
+{
+    QString currentText = ui->lineEdit_display->text();
+    if(!currentText.isEmpty()){
+        currentText.chop(1); //eliminate the last caracter
+        ui->lineEdit_display->setText(currentText);
+    }
 }
 
