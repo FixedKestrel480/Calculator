@@ -68,6 +68,16 @@ private slots:
 
     void on_pushButton_DEL_clicked();
 
+    void on_pushButton_par1_clicked();
+
+    void on_pushButton_par2_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_left_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString lastResult = "0"; //for the ans function, store the last result

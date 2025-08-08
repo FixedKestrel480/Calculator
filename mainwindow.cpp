@@ -184,10 +184,52 @@ void MainWindow::on_pushButton_clicked() //ans button
 
 void MainWindow::on_pushButton_DEL_clicked()
 {
-    QString currentText = ui->lineEdit_display->text();
-    if(!currentText.isEmpty()){
-        currentText.chop(1); //eliminate the last caracter
+    QString currentText = ui->lineEdit_display->text(); // shows the current text in caulculaotr
+    int position = ui->lineEdit_display->cursorPosition(); //get position
+    if(position >0 && !currentText.isEmpty()){ //if there is still and there exist an integer
+        currentText.remove(position-1,1); //remove the other character
         ui->lineEdit_display->setText(currentText);
+        ui->lineEdit_display->setCursorPosition(position-1);
     }
+    ui->lineEdit_display->setFocus();
+}
+
+
+void MainWindow::on_pushButton_par1_clicked()
+{
+    ui->lineEdit_display->insert(")");
+}
+
+
+void MainWindow::on_pushButton_par2_clicked()
+{
+    ui->lineEdit_display->insert("(");
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->lineEdit_display->insert(",");
+}
+
+
+void MainWindow::on_pushButton_3_clicked() //right movement
+{
+    int position = ui->lineEdit_display->cursorPosition(); //get position
+    int len = ui->lineEdit_display->text().length();
+    if (position < len) { //check if you can move
+        ui->lineEdit_display->setCursorPosition(position + 1); //go to the right
+    }
+    ui->lineEdit_display->setFocus(); //focus on QLineEdit
+}
+
+
+void MainWindow::on_pushButton_left_clicked()
+{
+    int position = ui->lineEdit_display->cursorPosition(); //get the actual position
+    if(position >0){
+        ui->lineEdit_display->setCursorPosition(position -1); //get to the left
+    }
+    ui->lineEdit_display->setFocus();
 }
 
